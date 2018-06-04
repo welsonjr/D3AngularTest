@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import * as d3 from 'd3';
-import { CharterService } from './charter.service';
-import { Data } from './data';
+import { CharterService } from './service/charter.service';
+import { Data } from './service/data';
 
 @Component({
   selector: 'app-root',
