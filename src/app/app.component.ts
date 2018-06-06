@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
         dada.forEach(function(d) {
             const date = d3.timeParse('%d-%b-%y')(d.date);
             const close = Number.parseFloat(d.close);
-            data.push({date: date, close: close});
+            data.push({date: date, value: close});
         });
 
         this.charter.drawChart(data, this.el);

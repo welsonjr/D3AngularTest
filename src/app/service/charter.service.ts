@@ -34,7 +34,7 @@ export class CharterService {
         .domain(d3.extent(data, d => d.date))
         .range([0, width]);
     const y = d3.scaleLinear()
-        .domain([0, d3.max(data, d => d.close)])
+        .domain([0, d3.max(data, d => d.value)])
         .range([height, 0]);
 
 
@@ -50,13 +50,14 @@ export class CharterService {
     svg.append('path')
         .datum(data)
         .attr('fill', 'none')
+        .attr('id', 'graphLine')
         .attr('stroke', 'steelblue')
         .attr('stroke-linejoin', 'round')
         .attr('stroke-linecap', 'round')
         .attr('stroke-width', 1.5)
-        .attr('d', d3.line()
-            .x((d:Data) => x(d.date))
-            .y((d:Data) => y(d.close))
+        .attr('d', d3.line<Data>()
+            .x(d => x(d.date))
+            .y(d => y(d.value))
         );
   }
 }
